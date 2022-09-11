@@ -26,4 +26,9 @@ router.put('/:id', validateId, validatePost, async (req, res) => {
     res.status(201).json(updatedAction)
 })
 
+router.delete('/:id', validateId, async (req, res) => {
+    const deletedAction = await Actions.remove(req.params.id)
+    res.status(200).json(deletedAction)
+})
+
 module.exports = router
