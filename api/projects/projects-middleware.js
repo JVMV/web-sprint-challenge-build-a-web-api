@@ -12,15 +12,24 @@ const validateId = async (req, res, next) => {
     }
 }
 
-const validatePost = async (req, res, next) => {
-    const { name, description } = req.body
+const validatePost = (req, res, next) => {
+    const { name, description} = req.body
     if(!name || !description) {
         res.status(400).json({message: `name and description is required`})
     } else {
-        const newProject = await Projects.insert(req.body)
-        req.newProject = newProject
+        req.changes = req.body
         next()
     }
 }
 
-module.exports = { validateId, validatePost }
+const validateChanges = (req, res, next) => {
+    const { name, description, completed } = req.body
+    if(!name || !description || !completed) {
+        res.status(400).json({message: `name, description, and completed is required`})
+    } else {
+        req.changes = req.body
+        next()
+    }
+}
+
+module.exports = { validateId, validatePost, validateChanges }
