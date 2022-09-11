@@ -24,7 +24,8 @@ const validatePost = (req, res, next) => {
 
 const validateChanges = (req, res, next) => {
     const { name, description, completed } = req.body
-    if(!name || !description || !completed) {
+    if(!name || !description || !('completed' in req.body) ) {
+        console.log(('completed' in req.body))
         res.status(400).json({message: `name, description, and completed is required`})
     } else {
         req.changes = req.body
