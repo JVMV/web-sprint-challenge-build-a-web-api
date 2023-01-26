@@ -1,3 +1,6 @@
+A project that uses express to build a RESTfulApi. Middleware is used to validate key data before doing any CRUD operations.
+
+
 # Sprint Challenge Instructions///
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
